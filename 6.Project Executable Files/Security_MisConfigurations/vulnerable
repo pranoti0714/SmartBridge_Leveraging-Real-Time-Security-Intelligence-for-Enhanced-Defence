@@ -1,0 +1,37 @@
+from flask import Flask, render_template, send_from_directory, jsonify
+import os
+
+app = Flask(__name__)
+
+app.config['DEBUG'] = True
+app.config['SECRET_KEY'] = "hardcoded_secret_key"
+
+UPLOAD_FOLDER = "uploads"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/uploads/')
+def list_files():
+    try:
+        files = os.listdir(app.config['UPLOAD_FOLDER'])
+        return jsonify(files)
+    except Exception as e:
+        return str(e), 500
+
+@app.route('/uploads/<path:filename>')
+def download_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+@app.route('/leak-info')
+def leak_info():
+    env_vars = {key: os.environ[key] for key in os.environ if "SECRET" in key or "PASS" in key}
+    return f"Leaked environment variables: {env_vars}"
+
+if __name__ == '__main__':
+    app.run(debug=True)

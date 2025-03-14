@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Security Demo</title>
+    <style>
+        /* Apply styles to the entire page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e2e;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* Center the main container */
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff4c4c;
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            font-size: 16px;
+            margin: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-danger {
+            background-color: #ff4c4c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #d73838;
+        }
+
+        .btn-info {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .btn-info:hover {
+            background-color: #1e50a2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚨 Flask Security Misconfiguration Demo 🚨</h1>
+
+        <p>❌ Debug Mode Enabled - This is a Security Risk!</p>
+
+        <a href="/leak-info" class="btn btn-danger">Click to Leak Info</a>
+
+        <a href="/uploads/" class="btn btn-info">View Exposed Uploads</a>
+    </div>
+
+</body>
+</html>
